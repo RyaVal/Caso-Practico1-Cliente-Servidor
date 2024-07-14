@@ -2,14 +2,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-// Importa la libreria (uuid) 
-const { v4: uuidv4 } = require('uuid');
-
 const app = express();
 const port = 3002;
 
 // Array en memoria para almacenar las notas
 let notes = [];
+let currentId = 1; // Contador de ID
 
 // Configura middleware
 app.use(bodyParser.json()); // Parsea cuerpos JSON
@@ -24,7 +22,7 @@ app.get('/notas', (req, res) => {
 app.post('/notas', (req, res) => {
     const { title, content } = req.body;
     const newNote = {
-        id: uuidv4(), // Genera un ID único para cada nota
+        id: currentId++, // Asinga los ID y los incremnata
         title,
         content,
         createdAt: new Date(),

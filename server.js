@@ -35,7 +35,7 @@ app.post('/notas', (req, res) => {
 // Ruta para actualizar una nota existente
 app.put('/notas/:id', (req, res) => {
     const { title, content } = req.body;
-    const note = notes.find(note => note.id === req.params.id);
+    const note = notes.find(note => note.id === parseInt(req.params.id));
     if (note) {
         note.title = title;
         note.content = content;
@@ -48,7 +48,7 @@ app.put('/notas/:id', (req, res) => {
 
 // Ruta para eliminar una nota
 app.delete('/notas/:id', (req, res) => {
-    notes = notes.filter(note => note.id !== req.params.id);
+    notes = notes.filter(note => note.id !== parseInt(req.params.id));
     res.status(204).send();
 });
 

@@ -39,6 +39,10 @@ button:hover {
     background-color: #0056b3;
 }
 
+#note-form-container {
+    margin-top: 20px;
+}
+
 #note-form {
     display: flex;
     flex-direction: column;
